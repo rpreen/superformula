@@ -10,13 +10,10 @@ Compilation:
 
 "make"			Builds all source files into an executable named "sfnn".  
 "make OPT=0"	Builds without compiler optimisations. 
-"make clean"	Removes all compiled object files.
 
 ====== 
 Usage: 
 ======
-
-The source file with the main function is sfnn.c.
 
 The following command will initiate the target-based evolution of supershapes.
 Most parameters are in constants.h.  Currently set to run for 10,000
