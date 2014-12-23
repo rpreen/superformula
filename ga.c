@@ -42,6 +42,7 @@ int negative_tournament();
 int tournament();
 int compare_fitness(const void *a, const void *b);
 
+_Bool grid[GRID_SIZE][GRID_SIZE][GRID_SIZE];
 _Bool target_grid[GRID_SIZE][GRID_SIZE][GRID_SIZE];
 double target_genome[] = { 6.0, 5.0, 10.0, 10.0, 4.0, 10.0, 10.0, 10.0 }; // star
 //double target_genome[] = { 3.0, 1.5, 12.0, 3.0, 0.0, 3.0, 0.0, 0.0 }; // heart
@@ -75,7 +76,6 @@ _Bool eval(SF *s)
 	if(s->fitness >= 0.0)
 		return false;
 	// draw individual
-	_Bool grid[GRID_SIZE][GRID_SIZE][GRID_SIZE];
 	draw_super_formula(s->genome, grid);
 	// filter completely empty or full grids
 	int voxels = 0;
