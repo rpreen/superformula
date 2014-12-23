@@ -14,7 +14,17 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ **************
+ * Description:
+ **************
+ * The supershape module.
+ *
+ * Provides functions to draw supershapes in a 3D voxel array using an
+ * extension of Gielis' superformula. Includes functions to fill the inside of
+ * the shapes to create solid objects.
  */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -85,12 +95,14 @@ void superduperformula(double u, double v, double genome[NUM_PARAMS], double cor
 	// [0,100] = m1, n11, n12, n13, m2, n21, n22, n23, t1, t2, d1, d2;
 	// [0,2] = c2;
 	// [0,10] = c1, c3;
-	// super shape fixed params
+
+	// super shape fixed params (original Gielis superformula)
 	double c1=1.0, c2=1.0, c3=0.0, t1=0.0, t2=0.0, d1=0.0, d2=0.0;
 	double r0=25.0;
 	// unique to this individual
 	double m1=genome[0], n11=genome[1], n12=genome[2], n13=genome[3],
 		   m2=genome[4], n21=genome[5], n22=genome[6], n23=genome[7];
+
 	double t2c = r0 * pow(c2, d2) * t2 * c1 / 2.0;
 	t2 =  t2 * c1 * u;
 	d1 = pow(u * c1, d1);

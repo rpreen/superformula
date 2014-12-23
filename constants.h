@@ -15,21 +15,22 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 #define max( a, b ) ( ((a) > (b)) ? (a) : (b) )
 #define min( a, b ) ( ((a) < (b)) ? (a) : (b) )
 #define M_PI 3.14159265358979323846264338327
 
 // Output parameters
-#define DISP_EVALS 100
+#define DISP_EVALS 100 // number of evaluations to average performance
 // Shape parameters
-#define NUM_PARAMS 8
-#define GRID_SIZE 50
+#define NUM_PARAMS 8 // number of superformula parameters to evolve
+#define GRID_SIZE 50 // x,y,z number of voxels in which to draw supershapes
 #define TOTAL_VOXELS 125000 // pow(GRID_SIZE, 3)
-#define MAX_COND 20
+#define MAX_COND 20 // maximum value of a superformula parameter
 // GA parameters
-#define MAX_EVALS 10000
-#define POPSIZE 200
-#define MUT_STEP 5.0
-#define MUT_RATE 0.25
-#define TSIZE 2
-#define TOP_PROTECT 1
+#define MAX_EVALS 10000 // number of evaluations to perform
+#define POPSIZE 200  // maximum population size
+#define MUT_STEP 5.0  // maximum mutation amount per allele
+#define MUT_RATE 0.25 // per allele probability of mutation
+#define TSIZE 2 // tournament size for selection and deletion
+#define TOP_PROTECT 1 // fittest n individuals to make immune from deletion

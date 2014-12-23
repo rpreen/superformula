@@ -14,7 +14,18 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ **************
+ * Description:
+ **************
+ * The main supershape evolution module.
+ *
+ * Initialises the random number generator, creates and evaluates an initial
+ * population of random parameters representing supershapes, then uses a
+ * steady-state genetic algorithm to evolve the population whereby individuals
+ * are scored based on how closely they match a given target shape.
  */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>

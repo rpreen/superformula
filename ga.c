@@ -14,7 +14,17 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ **************
+ * Description:
+ **************
+ * The supershape genetic algorithm module.
+ *
+ * Provides functions to create a population of random real-valued superformula
+ * parameters; the creation of offspring through selection and mutation; and the
+ * target-based evaluation of an individual.
  */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>

@@ -14,7 +14,17 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ **************
+ * Description:
+ **************
+ * The STL writing module.
+ *
+ * Provides functionality to encode a 3D binary voxel array in ASCII STL
+ * <https://en.wikipedia.org/wiki/STL_%28file_format%29> for use in CAD
+ * software such as MeshLab <http://meshlab.sourceforge.net>.
  */
+
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
