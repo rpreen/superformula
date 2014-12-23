@@ -15,6 +15,7 @@
 *.log
 *.sql
 *.sqlite
+*.swp
 .DS_Store
 .DS_Store?
 ._*
@@ -22,3 +23,4 @@
 .Trashes
 ehthumbs.db
 Thumbs.db 
+tags

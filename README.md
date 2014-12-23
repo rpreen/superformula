@@ -8,23 +8,21 @@ See <http://arxiv.org/abs/1204.4107> for details.
 Compilation: 
 ============
 
-"make"			Builds all source files into an executable named "sfnn".  
-"make OPT=0"	Builds without compiler optimisations. 
+To build the executable named "sfnn" simply run "make". To enable the parallel
+processing of the supershapes, compile with "PARALLEL=1".
 
 ====== 
 Usage: 
 ======
 
-The following command will initiate the target-based evolution of supershapes.
-Most parameters are in constants.h.  Currently set to run for 10,000
-evaluations using 8 supershape parameters against a star shape target. The only
-required argument is the file name for the system performance output. E.g.:
+To initiate the target-based evolution of supershapes simply run the executable
+and specify a file to write output (e.g., "./sfnn output.dat"). Most parameters
+are in constants.h. Default set to perform 10000 evaluations using 8 supershape
+parameters targetting a star shape.
 
-./sfnn output.dat	  
-
-===========
+-----------
 Additional:
-===========
+-----------
 
 A supershape visualisation tool and its source code produced by Martin
 Schneider, licensed under Creative Commons Attribution Share Alike 3.0 and GNU
