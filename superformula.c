@@ -56,14 +56,15 @@ void fillx(int center, int z, int y, _Bool g[GRID_SIZE][GRID_SIZE][GRID_SIZE]);
 
 void draw_super_formula(double genome[NUM_PARAMS], _Bool grid[GRID_SIZE][GRID_SIZE][GRID_SIZE])
 {
+#ifdef PARALLEL
 	// initialise empty grid
+	# pragma omp parallel for collapse(3)
 	for(int z = 0; z < GRID_SIZE; z++)
 		for(int y = 0; y < GRID_SIZE; y++)
 			for(int x = 0; x < GRID_SIZE; x++)
 				grid[z][y][x] = false;
 
 	// draw superformula
-#ifdef PARALLEL
 	# pragma omp parallel for collapse(2)
 	for(int u = 0; u < V_MAX; u++) {
 		for(int v = 0; v < V_MAX; v++) {
@@ -77,6 +78,13 @@ void draw_super_formula(double genome[NUM_PARAMS], _Bool grid[GRID_SIZE][GRID_SI
 		}
 	}
 #else
+	// initialise empty grid
+	for(int z = 0; z < GRID_SIZE; z++)
+		for(int y = 0; y < GRID_SIZE; y++)
+			for(int x = 0; x < GRID_SIZE; x++)
+				grid[z][y][x] = false;
+
+	// draw superformula
 	double cords[3];
 	for(double u = 0.0; u < 1.0; u += RES) {
 		for(double v = 0.0; v < 1.0; v += RES) {
