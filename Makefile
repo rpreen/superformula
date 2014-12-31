@@ -19,16 +19,21 @@
 CC=gcc
 
 FLAGS=
-CFLAGS=$(FLAGS) -Wall -Wextra -std=c11 -pipe -g 
+CFLAGS=$(FLAGS) -Wall -Wextra -std=gnu11 -pipe -g 
 LDFLAGS=$(FLAGS)
 LIB=-lm
 
 OPT=1
+PARALLEL=0
 GENPROF=0
 USEPROF=0
 
 ifeq ($(OPT),1)
 	FLAGS+= -Ofast -march=native
+endif
+ifeq ($(PARALLEL),1)
+	CFLAGS+= -DPARALLEL
+	FLAGS+= -fopenmp
 endif
 ifeq ($(GENPROF),1)
 	FLAGS+= -fprofile-generate
