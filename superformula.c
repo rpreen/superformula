@@ -35,7 +35,6 @@
 #include "write_stl.h"
 
 #define RES 0.002 // resolution to draw the supershape
-#define V_MAX 500 // 1.0/RES (for parallel for loop)
 
 void superduperformula(double u, double v, double superf[NUM_PARAMS], double cords[3]);
 double superformula(double phi, double a, double b, double m, double n1, double n2, double n3);
@@ -61,19 +60,12 @@ void draw_super_formula(double genome[NUM_PARAMS], _Bool grid[GRID_SIZE][GRID_SI
 		for(int y = 0; y < GRID_SIZE; y++)
 			for(int x = 0; x < GRID_SIZE; x++)
 				grid[z][y][x] = false;
+
 	// draw superformula
-#ifdef PARALLEL
-	for(double u=0.0; u<1.0; u+=RES) {
-		# pragma omp parallel for
-		for(int v=0; v<V_MAX; v++) {
-			double cords[3];
-			superduperformula(u,((double)v*RES),genome,cords);
-#else
 	double cords[3];
 	for(double u=0.0; u<1.0; u+=RES) {
 		for(double v=0.0; v<1.0; v+=RES) {
 			superduperformula(u,v,genome,cords);
-#endif
 			int z = (int)(cords[2]+GRID_SIZE)/2;
 			int y = (int)(cords[1]+GRID_SIZE)/2;
 			int x = (int)(cords[0]+GRID_SIZE)/2;
