@@ -8,8 +8,7 @@ See <http://arxiv.org/abs/1204.4107> for details.
 Compilation: 
 ============
 
-To build the executable named "sfnn" simply run "make". To enable the parallel
-processing of the supershapes, compile with "PARALLEL=1".
+To build the executable named "sfnn" simply run "make".
 
 ====== 
 Usage: 
