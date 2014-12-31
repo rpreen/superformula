@@ -64,7 +64,7 @@ void draw_super_formula(double genome[NUM_PARAMS], _Bool grid[GRID_SIZE][GRID_SI
 
 	// draw superformula
 #ifdef PARALLEL
-	# pragma omp parallel for
+	# pragma omp parallel for collapse(2)
 	for(int u = 0; u < V_MAX; u++) {
 		for(int v = 0; v < V_MAX; v++) {
 			double cords[3];
