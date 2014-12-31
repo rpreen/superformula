@@ -79,6 +79,9 @@ _Bool eval(SF *s)
 	draw_super_formula(s->genome, grid);
 	// filter completely empty or full grids
 	int voxels = 0;
+#ifdef PARALLEL
+	# pragma omp parallel for collapse(3) reduction(+:voxels)
+#endif
 	for(int z = 0; z < GRID_SIZE; z++)
 		for(int y = 0; y < GRID_SIZE; y++)
 			for(int x = 0; x < GRID_SIZE; x++)
@@ -90,6 +93,9 @@ _Bool eval(SF *s)
 	}
 	// compare with target
 	double error = 0.0;
+#ifdef PARALLEL
+	# pragma omp parallel for collapse(3) reduction(+:error)
+#endif
 	for(int z = 0; z < GRID_SIZE; z++)
 		for(int y = 0; y < GRID_SIZE; y++)
 			for(int x = 0; x < GRID_SIZE; x++)
