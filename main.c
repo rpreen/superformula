@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012--2015 Richard Preen <rpreen@gmail.com>
+ * Copyright (C) 2016 Richard Preen <rpreen@gmail.com>
  * See <http://arxiv.org/abs/1204.4107> for details.
  *
  * This program is free software: you can redistribute it and/or modify
@@ -39,28 +39,13 @@
 #include "write_stl.h"
 
 void display();
-FILE *out;
 
-int main(int argc, char *argv[])
+int main()
 {
-	// must specify a file to write output
-	if(argc != 2) {
-		printf("usage: %s output_file_name\n", argv[0]);
-		return EXIT_FAILURE;
-	}
-	else
-	{
-		// open file for writing output
-		out = fopen(argv[1], "wt");
-		if(out == 0) {
-			printf("Error: could not open output file: %s. %s.\n", 
-					argv[1], strerror(errno));
-			return EXIT_FAILURE;
-		}
-	}
 	init_random(); // set the random generator seed
 	init_ga(); // initialise and evaluate population
 	display(); // display initial state
+
 	// evolve population
 	while(evals < MAX_EVALS) {
 		SF child = create_child();
@@ -70,24 +55,22 @@ int main(int argc, char *argv[])
 		if(evals % DISP_EVALS == 0)
 			display();
 	}
+
 	// print best shape found
 	SF best = pop[fittest_individual()];
 	print_sf(&best);
+
 	// write best to stl
 //	_Bool grid[GRID_SIZE][GRID_SIZE][GRID_SIZE];
 //	draw_super_formula( best.genome, grid );
 //	write_stl( grid, "best.stl" );
-	fclose(out);
+
 	return EXIT_SUCCESS;
 }
 
 void display()
 {
 	SF best = pop[fittest_individual()];
-	printf("(Evals) %d (Best) %.8f (Avg) %.8f\n", 
-			evals, best.fitness, avg_fit());
-	fprintf(out, "%d,%.8f,%.8f\n", 
-			evals, best.fitness, avg_fit());
+	printf("%d %.8f %.8f\n", evals, best.fitness, avg_fit());
 	fflush(stdout);
-	fflush( out );
 }

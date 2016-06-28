@@ -8,17 +8,16 @@ See <http://arxiv.org/abs/1204.4107> for details.
 Compilation: 
 ============
 
-To build the executable named "sfnn" simply run "make". To enable the parallel
-processing of the supershapes, compile with "PARALLEL=1".
+To build the executable named "run" simply run "make". To enable the parallel
+processing of the supershapes with OpenMP, compile with "PARALLEL=1".
 
 ====== 
 Usage: 
 ======
 
 To initiate the target-based evolution of supershapes simply run the executable
-and specify a file to write output (e.g., "./sfnn output.dat"). Most parameters
-are in constants.h. Default set to perform 10000 evaluations using 8 supershape
-parameters targetting a star shape.
+(i.e., "./run"). Most parameters are in constants.h. Default set to perform
+10000 evaluations using 8 supershape parameters targetting a star shape.
 
 -----------
 Additional:

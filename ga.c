@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012--2015 Richard Preen <rpreen@gmail.com>
+ * Copyright (C) 2016 Richard Preen <rpreen@gmail.com>
  * See <http://arxiv.org/abs/1204.4107> for details.
  *
  * This program is free software: you can redistribute it and/or modify
@@ -188,16 +188,9 @@ void print_sf(SF *s)
 
 void mutate(SF *s)
 {
-	for(int i = 0; i < NUM_PARAMS; i++) {
-		if(drand() <= MUT_RATE) {
-			s->genome[i] += (drand()*2.0*MUT_STEP)-MUT_STEP;
-			// bounds enforcement
-			if(s->genome[i] > MAX_COND)
-				s->genome[i] = MAX_COND;
-			else if(s->genome[i] < 0.0)
-				s->genome[i] = 0.0;
-		}
-	}
+	for(int i = 0; i < NUM_PARAMS; i++)
+		if(drand() < MUT_RATE)
+			s->genome[i] = drand() * MAX_COND;
 }
 
 int compare_fitness(const void *a, const void *b)

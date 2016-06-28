@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012--2015 Richard Preen <rpreen@gmail.com>
+ * Copyright (C) 2016 Richard Preen <rpreen@gmail.com>
  * See <http://arxiv.org/abs/1204.4107> for details.
  *
  * This program is free software: you can redistribute it and/or modify
@@ -29,7 +29,6 @@
 // GA parameters
 #define MAX_EVALS 10000 // number of evaluations to perform
 #define POPSIZE 200  // maximum population size
-#define MUT_STEP 5.0  // maximum mutation amount per allele
-#define MUT_RATE 0.25 // per allele probability of mutation
+#define MUT_RATE 0.12 // per allele probability of mutation
 #define TSIZE 2 // tournament size for selection and deletion
 #define TOP_PROTECT 1 // fittest n individuals to make immune from deletion
